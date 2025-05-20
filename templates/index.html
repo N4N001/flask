@@ -1,0 +1,30 @@
+
+    {% extends "base.html" %}
+    {% block title %}
+    <h1>Current Users</h1>
+    {% endblock %}
+    {% block content %}
+
+  <a class="button" href="{{ url_for('user.add_user') }}">Add New User</a>
+
+  {% if users %}
+    <ul class="user-list">
+  {% for user in users %}
+    <li class="user-card">
+      <div>
+        <strong>{{ user.name }}</strong> ({{ user.age }} years old)
+      </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <a class="button" href="{{ url_for('user.user_detail', index=loop.index0) }}">View</a>
+        <form method="post" action="{{ url_for('user.delete_user', index=loop.index0) }}">
+          <button class="button" type="submit">Delete</button>
+        </form>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+  {% else %}
+    <p>No users added yet.</p>
+  {% endif %}
+    {% endblock %}
