@@ -21,7 +21,7 @@ def add_user():
 
     return render_template('add_user.html')
 
-@user_bp.route('/delete/<int:index>')
+@user_bp.route('/delete/<int:index>', methods=['POST'])
 def delete_user(index):
     if 0 <= index < len(users):
         users.pop(index)

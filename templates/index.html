@@ -1,14 +1,14 @@
+{% extends "base.html" %}
 
-    {% extends "base.html" %}
-    {% block title %}
-    <h1>Current Users</h1>
-    {% endblock %}
-    {% block content %}
+{% block title %}
+<h1>Current Users</h1>
+{% endblock %}
 
-  <a class="button" href="{{ url_for('user.add_user') }}">Add New User</a>
+{% block content %}
+<a class="button" href="{{ url_for('user.add_user') }}">Add New User</a>
 
-  {% if users %}
-    <ul class="user-list">
+{% if users %}
+  <ul class="user-list">
   {% for user in users %}
     <li class="user-card">
       <div>
@@ -22,9 +22,8 @@
       </div>
     </li>
   {% endfor %}
-</ul>
-
-  {% else %}
-    <p>No users added yet.</p>
-  {% endif %}
-    {% endblock %}
+  </ul>
+{% else %}
+  <p>No users added yet.</p>
+{% endif %}
+{% endblock %}
